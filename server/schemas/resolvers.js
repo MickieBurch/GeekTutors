@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Category, Order } = require('../models');
+const { User, Class, Category, Payment } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -33,34 +33,34 @@ const resolvers = {
           populate: 'category'
         });
 
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+        user.payment.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
         return user;
       }
 
       throw new AuthenticationError('Not logged in');
     },
-    order: async (parent, { _id }, context) => {
+    payment: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'payment.class',
           populate: 'category'
         });
 
-        return user.orders.id(_id);
+        return user.payment.id(_id);
       }
 
       throw new AuthenticationError('Not logged in');
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ class: args.class });
+      const payment = new payment({ class: args.class });
       const line_items = [];
 
-      const { class } = await order.populate('class');
+      const { class } = await payment.populate('class');
 
       for (let i = 0; i < class.length; i++) {
-        const product = await stripe.class.create({
+        const class = await stripe.class.create({
           name: class[i].name,
           description: class[i].description,
           images: [`${url}/images/${class[i].image}`]
@@ -96,14 +96,14 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { class }, context) => {
+    addPayment: async (parent, { class }, context) => {
       console.log(context);
       if (context.user) {
-        const order = new Order({ class });
+        const payment = new Payment({ class });
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+        await User.findByIdAndUpdate(context.user._id, { $push: { payment: payment } });
 
-        return order;
+        return payment;
       }
 
       throw new AuthenticationError('Not logged in');
