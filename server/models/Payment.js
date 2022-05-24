@@ -7,10 +7,10 @@ const paymentSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  products: [
+  payment: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Product'
+      ref: 'payment'
     }
   ]
 });
