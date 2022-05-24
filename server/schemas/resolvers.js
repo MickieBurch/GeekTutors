@@ -8,7 +8,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    products: async (parent, { category, name }) => {
+    class: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
@@ -21,15 +21,15 @@ const resolvers = {
         };
       }
 
-      return await Product.find(params).populate('category');
+      return await Class.find(params).populate('category');
     },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+    class: async (parent, { _id }) => {
+      return await Class.findById(_id).populate('category');
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
+          path: 'payment.class',
           populate: 'category'
         });
 
@@ -43,7 +43,7 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
+          path: 'payment.class',
           populate: 'category'
         });
 
@@ -54,21 +54,21 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
+      const order = new Order({ class: args.class });
       const line_items = [];
 
-      const { products } = await order.populate('products');
+      const { class } = await order.populate('class');
 
-      for (let i = 0; i < products.length; i++) {
-        const product = await stripe.products.create({
-          name: products[i].name,
-          description: products[i].description,
-          images: [`${url}/images/${products[i].image}`]
+      for (let i = 0; i < class.length; i++) {
+        const product = await stripe.class.create({
+          name: class[i].name,
+          description: class[i].description,
+          images: [`${url}/images/${class[i].image}`]
         });
 
         const price = await stripe.prices.create({
           product: product.id,
-          unit_amount: products[i].price * 100,
+          unit_amount: class[i].price * 100,
           currency: 'usd',
         });
 
@@ -96,10 +96,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
+    addOrder: async (parent, { class }, context) => {
       console.log(context);
       if (context.user) {
-        const order = new Order({ products });
+        const order = new Order({ class });
 
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
