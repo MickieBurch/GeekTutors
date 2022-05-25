@@ -8,22 +8,22 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    class: async (parent, { category, name }) => {
-      const params = {};
+    // class: async (parent, { category, name }) => {
+    //   const params = {};
 
-      if (category) {
-        params.category = category;
-      }
+    //   if (category) {
+    //     params.category = category;
+    //   }
 
-      if (name) {
-        params.name = {
-          $regex: name
-        };
-      }
+    //   if (name) {
+    //     params.name = {
+    //       $regex: name
+    //     };
+    //   }
 
-      return await Class.find(params).populate('category');
-    },
-    class: async (parent, { _id }) => {
+    //   return await Class.find(params).populate('category');
+    // },
+    Class: async (parent, { _id }) => {
       return await Class.findById(_id).populate('category');
     },
     user: async (parent, args, context) => {
@@ -57,18 +57,18 @@ const resolvers = {
       const payment = new payment({ class: args.class });
       const line_items = [];
 
-      const { class } = await payment.populate('class');
+      const { CLASS } = await payment.populate('class');
 
-      for (let i = 0; i < class.length; i++) {
-        const class = await stripe.class.create({
-          name: class[i].name,
-          description: class[i].description,
-          images: [`${url}/images/${class[i].image}`]
+      for (let i = 0; i < CLASS.length; i++) {
+        const CLASS = await stripe.class.create({
+          name: CLASS[i].name,
+          description: CLASS[i].description,
+          images: [`${url}/images/${CLASS[i].image}`]
         });
 
         const price = await stripe.prices.create({
           product: product.id,
-          unit_amount: class[i].price * 100,
+          unit_amount: CLASS[i].price * 100,
           currency: 'usd',
         });
 
@@ -96,10 +96,10 @@ const resolvers = {
 
       return { token, user };
     },
-    addPayment: async (parent, { class }, context) => {
+    addPayment: async (parent, { CLASS }, context) => {
       console.log(context);
       if (context.user) {
-        const payment = new Payment({ class });
+        const payment = new Payment({ CLASS });
 
         await User.findByIdAndUpdate(context.user._id, { $push: { payment: payment } });
 
@@ -115,11 +115,11 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateProduct: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
+    // updateProduct: async (parent, { _id, quantity }) => {
+    //   const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
-    },
+    //   return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

@@ -40,7 +40,6 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    Class(category: ID, name: String): [Class]
     Class(_id: ID!): Class
     user: User
     payment(_id: ID!): Payment
