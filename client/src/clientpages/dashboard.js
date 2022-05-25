@@ -22,7 +22,7 @@ function Dashboard(props) {
             <ul className='db-nav-ulist'>
                     {options.map((option) => (
                         <li className={`db-nav-list-item`} key={option.name}>
-                            {option.name}
+                            <span>{option.name}</span>
                         </li>
                     ))}
                 </ul>
