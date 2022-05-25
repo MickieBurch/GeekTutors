@@ -3,9 +3,7 @@ import Logo from '../assets/logo/nerd.png'
 
 function Dashboard(props) {
     const {
-        options = [],
-        currentOption,
-        setCurrentOption
+        options = []
         
     } = props
     console.log(options)
