@@ -5,8 +5,12 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    categories: async () => {
-      return await Category.find();
+    GetAllCategories: async () => {
+      try {
+        return await Category.find({});
+      } catch (error) {
+        console.log(error);
+      }
     },
     // class: async (parent, { category, name }) => {
     //   const params = {};
@@ -23,8 +27,12 @@ const resolvers = {
 
     //   return await Class.find(params).populate('category');
     // },
-    Class: async (parent, { _id }) => {
-      return await Class.findById(_id).populate('category');
+    GetClassById: async (parent, { _id }) => {
+      try {
+        return await Class.findById(_id).populate('category');
+      } catch (error) {
+        console.log(error);
+      }
     },
     user: async (parent, args, context) => {
       if (context.user) {

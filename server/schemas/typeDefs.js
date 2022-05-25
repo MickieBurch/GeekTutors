@@ -39,8 +39,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    categories: [Category]
-    Class(_id: ID!): Class
+    GetAllCategories: [Category]
+    GetClassById(_id: ID!): Class
     user: User
     payment(_id: ID!): Payment
     checkout(Class: [ID]!): Checkout
