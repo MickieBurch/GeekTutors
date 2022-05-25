@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-const resolvers={
-    Query:{
-        CurrentUser:async(parent,{token})=>{
-            return null
-        }
-    }
-}
-module.exports=resolvers
-=======
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Class, Category, Payment } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -151,4 +141,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
->>>>>>> feature/dashboard
