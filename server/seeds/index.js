@@ -10,14 +10,13 @@ db.once("open", async()=>{
     //Delete all previous data
     await User.deleteMany()
     await Category.deleteMany()
-    await Payment.deleteMany()
     await Class.deleteMany()
-
+    
     //bulk create and populate all models
     const users=await User.insertMany(userData)
     const categories=await Category.insertMany(categoryData)
     const classes = await Class.insertMany(classData)
-
+    console.log("flag 1");
     for (newClass of classes){
         const tempCategory = categories[Math.floor(Math.random()*categories.length)]
         newClass.category=tempCategory._id

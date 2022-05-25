@@ -11,7 +11,7 @@ const typeDefs = gql`
     name: String
     description: String
     image: String
-    quantity: Int
+    price: Int
     category: Category
   }
 
@@ -41,6 +41,7 @@ const typeDefs = gql`
   type Query {
     GetAllCategories: [Category]
     GetClassById(_id: ID!): Class
+    GetAllClasses: [Class]
     user: User
     payment(_id: ID!): Payment
     checkout(Class: [ID]!): Checkout

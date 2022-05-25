@@ -7,7 +7,14 @@ const resolvers = {
   Query: {
     GetAllCategories: async () => {
       try {
-        return await Category.find({});
+        return await Category.find();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    GetAllClasses:async()=>{
+      try {
+        return await Class.find().populate("category")
       } catch (error) {
         console.log(error);
       }
