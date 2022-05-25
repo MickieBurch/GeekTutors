@@ -4,7 +4,7 @@ import Dashboard from './clientpages/dashboard'
 function App() {
   const [options] = useState([
     {
-      "name": 'Tutor'
+      "name": "Tutor's"
     },
     {
       "name": 'Recources'
