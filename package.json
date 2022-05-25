@@ -1,0 +1,23 @@
+{
+  "name": "geektutors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build":"cd client && npm run build",
+    "start":"node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MickieBurch/GeekTutors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MickieBurch/GeekTutors/issues"
+  },
+  "homepage": "https://github.com/MickieBurch/GeekTutors#readme"
+}
