@@ -15,17 +15,6 @@ function Dashboard(props) {
             </div>  
             <h1>GeekTutor</h1>
         </header>
-        <section className="db-nav">
-            <nav>
-            <ul className='db-nav-ulist'>
-                    {options.map((option) => (
-                        <li className={`db-nav-list-item`} key={option.name}>
-                            <span>{option.name}</span>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        </section>
         </>
     )
 }
