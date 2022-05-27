@@ -29,17 +29,17 @@ const typeDefs = gql`
   }
 
   type Query {
-    GetAllUsers: [User]
-    GetCurrentUser: User
-    GetAllArticles: [Article]
-    GetArticleById(id:ID!): Article
-    GetAllSubjects: [Subject]
-    GetSubjectById(id:ID!): Subject
+    GetAllUsers(token:String!): [User]
+    GetCurrentUser(token:String!): User
+    GetAllArticles(token:String!): [Article]
+    GetArticleById(token:String!,id:ID!): Article
+    GetAllSubjects(token:String!): [Subject]
+    GetSubjectById(token:String!,id:ID!): Subject
   }
 
   type Mutation {
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    enrollStudent(subjectId:ID!): User
+    enrollStudent(token:String!,subjectId:ID!): User
     login(email: String!, password: String!): Auth
   }
 `;
