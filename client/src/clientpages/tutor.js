@@ -3,6 +3,7 @@ import React from "react";
 import Ronald from "../assets/img/Ronald.jpg"
 import { Card, Container } from "react-bootstrap";
 import GeekCalendar from "./calendar";
+import Picker from './datepicker';
 
 function Tutor() {
   return (
@@ -47,6 +48,7 @@ function Tutor() {
       </div>
     </Card>
     <GeekCalendar />
+    <Picker />
     </Container>
   );
 }
