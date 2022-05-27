@@ -1,10 +1,12 @@
 import React from "react";
 // import Logo from "../assets/logo/nerd.png";
 import Ronald from "../assets/img/Ronald.jpg"
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
+import GeekCalendar from "./calendar";
 
 function Tutor() {
   return (
+    <Container>
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={Ronald} />
       <Card.Body>
@@ -44,7 +46,11 @@ function Tutor() {
         </a>
       </div>
     </Card>
+    <GeekCalendar />
+    </Container>
   );
 }
+
+
 
 export default Tutor;
