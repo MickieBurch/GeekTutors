@@ -1,107 +1,33 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Class, Category, Payment } = require('../models');
-const { signToken } = require('../utils/auth');
+const { User, Subject, Article } = require('../models');
+const { signToken, authMiddleware } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    GetAllCategories: async () => {
-      try {
-        return await Category.find();
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    GetAllClasses:async()=>{
-      try {
-        return await Class.find().populate("category")
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    // class: async (parent, { category, name }) => {
-    //   const params = {};
-
-    //   if (category) {
-    //     params.category = category;
-    //   }
-
-    //   if (name) {
-    //     params.name = {
-    //       $regex: name
-    //     };
-    //   }
-
-    //   return await Class.find(params).populate('category');
-    // },
-    GetClassById: async (parent, { _id }) => {
-      try {
-        return await Class.findById(_id).populate('category');
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'payment.class',
-          populate: 'category'
-        });
-
-        user.payment.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-    payment: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'payment.class',
-          populate: 'category'
-        });
-
-        return user.payment.id(_id);
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
-    checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-      const payment = new payment({ class: args.class });
-      const line_items = [];
-
-      const { CLASS } = await payment.populate('class');
-
-      for (let i = 0; i < CLASS.length; i++) {
-        const CLASS = await stripe.class.create({
-          name: CLASS[i].name,
-          description: CLASS[i].description,
-          images: [`${url}/images/${CLASS[i].image}`]
-        });
-
-        const price = await stripe.prices.create({
-          product: product.id,
-          unit_amount: CLASS[i].price * 100,
-          currency: 'usd',
-        });
-
-        line_items.push({
-          price: price.id,
-          quantity: 1
-        });
-      }
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items,
-        mode: 'payment',
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`
-      });
-
-      return { session: session.id };
+    GetCurrentUser:async(parent,{token})=>{
+      const user= authMiddleware(token)
+        if(user){
+          return await User.find(user._id).populate({
+            path:"Subject",
+            populate:({path:"Article"})
+          })
+        }else{
+          throw new AuthenticationError("invalid token")
+        }
+    },  
+    GetAllUsers:async(parent,{token})=>{
+        console.log("Printing everything");
+        const user= authMiddleware(token)
+        if(user){
+            return await User.find().populate({
+            path:"enrolledSubject",
+            populate:({
+              path:"articles"
+            })
+          })
+        }
+        throw new AuthenticationError("invalid token")
     }
   },
   Mutation: {
@@ -111,18 +37,6 @@ const resolvers = {
 
       return { token, user };
     },
-    addPayment: async (parent, { CLASS }, context) => {
-      console.log(context);
-      if (context.user) {
-        const payment = new Payment({ CLASS });
-
-        await User.findByIdAndUpdate(context.user._id, { $push: { payment: payment } });
-
-        return payment;
-      }
-
-      throw new AuthenticationError('Not logged in');
-    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
@@ -130,11 +44,6 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    // updateProduct: async (parent, { _id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
-
-    //   return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
-    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

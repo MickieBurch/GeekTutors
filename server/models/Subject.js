@@ -8,14 +8,21 @@ const subjectSchema= new Schema({
     },
     proctor:{
         type:Schema.Types.ObjectId,
-        required:true,
+        //required:true,
         ref:"User"
     },
     description:{
         type:String,
         required:true,
         trim:true
-    }
+    },
+    articles:
+    [
+        {
+            type:Schema.Types.ObjectId,
+            ref:"Article"
+        } 
+    ]
 })
 
 const Subject= model("Subject",subjectSchema)
