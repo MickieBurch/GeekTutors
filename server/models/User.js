@@ -24,6 +24,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5
+  },
+  enrolledSubject:{
+    type: Schema.Types.ObjectId,
+    ref:"Subject"
+  },
+  isProctor:{
+    type:Boolean,
+    //required:true
   }
 });
 
