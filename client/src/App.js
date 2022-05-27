@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 import { BrowserRouter as Router } from "react-router-dom"
+import 'react-calendar/dist/Calendar.css';
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache()
