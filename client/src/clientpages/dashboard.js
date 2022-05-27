@@ -5,7 +5,7 @@ import Ronald from "../assets/img/Ronald.jpg";
 function Dashboard() {
   return (
     <Container>
-      <h1 className="justify-content-center">Available Tutors</h1>
+      <h1 className="text-center">Available Tutors</h1>
       <CardGroup>
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={Ronald} />
