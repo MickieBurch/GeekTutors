@@ -1,3 +1,4 @@
+/*
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -28,3 +29,4 @@ const classSchema = new Schema({
 const Class = mongoose.model('Class', classSchema);
 
 module.exports = Class;
+*/
