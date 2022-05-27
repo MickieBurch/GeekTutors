@@ -11,6 +11,7 @@ const typeDefs = gql`
   }
   type Subject{
     _id: ID
+    name: String
     proctor: User
     description: String
     articles: [Article]
@@ -30,11 +31,15 @@ const typeDefs = gql`
   type Query {
     GetAllUsers: [User]
     GetCurrentUser: User
+    GetAllArticles: [Article]
+    GetArticleById(id:ID!): Article
+    GetAllSubjects: [Subject]
+    GetSubjectById(id:ID!): Subject
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    enrollStudent(subjectId:ID!): User
     login(email: String!, password: String!): Auth
   }
 `;
