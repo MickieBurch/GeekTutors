@@ -25,6 +25,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "stripe": "^9.4.0"
   }
 }
