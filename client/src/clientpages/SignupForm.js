@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { createUser } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const SignupForm = () => {
+function SignupForm() {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   // set state for form validation
@@ -48,7 +48,6 @@ const SignupForm = () => {
       password: '',
     });
   };
-
   return (
     <>
       {/* This is needed for the validation functionality above */}
@@ -57,7 +56,6 @@ const SignupForm = () => {
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
         </Alert>
-
         <Form.Group>
           <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control

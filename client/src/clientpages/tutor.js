@@ -14,34 +14,34 @@ function Tutor() {
         <Card.Title>Ronald J. Tutor</Card.Title>
         <Card.Text>Articles by Ronald</Card.Text>
       </Card.Body>
-      <div class="list-group">
+      <div className="list-group">
         <a
           href="https://github.com/MickieBurch/GeekTutors"
-          class="list-group-item list-group-item-action"
+          className="list-group-item list-group-item-action"
         >
           Cras justo odio
         </a>
         <a
           href="https://github.com/MickieBurch/GeekTutors"
-          class="list-group-item list-group-item-action"
+          className="list-group-item list-group-item-action"
         >
           Dapibus ac facilisis in
         </a>
         <a
           href="https://github.com/MickieBurch/GeekTutors"
-          class="list-group-item list-group-item-action"
+          className="list-group-item list-group-item-action"
         >
           Morbi leo risus
         </a>
         <a
           href="https://github.com/MickieBurch/GeekTutors"
-          class="list-group-item list-group-item-action"
+          className="list-group-item list-group-item-action"
         >
           Porta ac consectetur ac
         </a>
         <a
           href="https://github.com/MickieBurch/GeekTutors"
-          class="list-group-item list-group-item-action"
+          className="list-group-item list-group-item-action"
         >
           Vestibulum at eros
         </a>

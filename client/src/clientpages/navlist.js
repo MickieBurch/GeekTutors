@@ -23,12 +23,12 @@ function NavList(props) {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link onClick={() => setCurrentTab("LoginForm")} eventKey="LoginForm">
+            <Nav.Link onClick={() => setCurrentTab("signup")} eventKey="signup">
               Signup
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link onClick={() => setCurrentTab("SignupForm")} eventKey="SignupForm">
+            <Nav.Link onClick={() => setCurrentTab("login")} eventKey="login">
               Login
             </Nav.Link>
           </Nav.Item>

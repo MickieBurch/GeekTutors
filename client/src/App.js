@@ -27,13 +27,13 @@ function App() {
 				return <Tutor />;
 			case "signup":
 				return <SignupForm />;
-				case "login":
+			case "login":
 				return <LoginForm />;
 			default:
 				return null;
 		}
 	};
-
+	console.log(currentTab)
   return (
     <ApolloProvider client={client}>
       <Router>
