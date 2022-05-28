@@ -1,35 +1,48 @@
 import React, { useState } from 'react'
+import Header from './clientpages/header'
 import Dashboard from './clientpages/dashboard'
+import LoginForm from './clientpages/LoginForm'
+import SignupForm from './clientpages/SignupForm'
+import Tutor from './clientpages/tutor'
+import { Container } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
+import 'react-calendar/dist/Calendar.css';
+
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache()
 })
+
 function App() {
-  const [options] = useState([
-    {
-      "name": "Tutor's"
-    },
-    {
-      "name": 'Recources'
-    },
-    {
-      "name": 'Signup'
-    },
-    {
-      "name": 'Login'
-    }
-  ]);
-  const [currentOption, setCurrentOption] = useState(options[0])
+  const [currentTab, setCurrentTab] = useState("home");
+
+	const renderTab = () => {
+		switch (currentTab) {
+			case "home":
+				return <Dashboard setCurrentTab={setCurrentTab}/>;
+			case "tutor":
+				return <Tutor />;
+			case "signup":
+				return <SignupForm />;
+				case "login":
+				return <LoginForm />;
+			default:
+				return null;
+		}
+	};
 
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='main-div'>
-          <Dashboard options={options} currentOption={currentOption} setCurrentOption={setCurrentOption}></Dashboard>
-        </div>
+      <Container fluid>     
+				<Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
+        </Container>
+			<Container fluid>
+				<main>{renderTab()}</main>
+			</Container>
       </Router>
     </ApolloProvider>
   );

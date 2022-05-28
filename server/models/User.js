@@ -24,8 +24,16 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5
+  },
+  enrolledSubject:{
+    type: Schema.Types.ObjectId,
+    ref:"Subject"
+  },
+  isProctor:{
+    type:Boolean,
+    required:true,
+    default:false
   }
-  //orders: [Order.schema]
 });
 
 // set up pre-save middleware to create password
