@@ -7,7 +7,8 @@ const subjectData= require("./subjectData.json")
 db.once("open", async()=>{
     //Delete all previous data
     await User.deleteMany()
-    
+    await Article.deleteMany()
+    await Subject.deleteMany()
     //bulk create and populate all models
     const users=await User.insertMany(userData)
     const articles = await Article.insertMany(articleData)

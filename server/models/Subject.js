@@ -8,7 +8,7 @@ const subjectSchema= new Schema({
     },
     proctor:{
         type:Schema.Types.ObjectId,
-        //required:true,
+        // required:true
         ref:"User"
     },
     description:{

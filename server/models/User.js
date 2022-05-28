@@ -31,7 +31,8 @@ const userSchema = new Schema({
   },
   isProctor:{
     type:Boolean,
-    //required:true
+    required:true,
+    default:false
   }
 });
 
