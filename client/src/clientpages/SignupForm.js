@@ -6,11 +6,12 @@ import Auth from '../utils/auth';
 
 function SignupForm() {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
   // set state for form validation
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
+  console.log(userFormData)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -26,24 +27,18 @@ function SignupForm() {
       event.preventDefault();
       event.stopPropagation();
     }
+    setValidated(true)
 
     try {
-      const response = await createUser(userFormData);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
+      
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
 
     setUserFormData({
-      username: '',
+      lirstName: '',
+      lastName: '',
       email: '',
       password: '',
     });
@@ -57,13 +52,26 @@ function SignupForm() {
           Something went wrong with your signup!
         </Alert>
         <Form.Group>
-          <Form.Label htmlFor='username'>Username</Form.Label>
+          <Form.Label htmlFor='firstName'>First Name</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Your username'
-            name='username'
+            placeholder='Your First Name'
+            name='firstName'
             onChange={handleInputChange}
-            value={userFormData.username}
+            value={userFormData.firstName}
+            required
+          />
+          <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label htmlFor='lastName'>Last Name</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Your Last Name'
+            name='lastName'
+            onChange={handleInputChange}
+            value={userFormData.lastName}
             required
           />
           <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
