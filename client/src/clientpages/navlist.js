@@ -7,6 +7,11 @@ import Auth from '../utils/auth'
 function NavList(props) {
   const { currentTab, setCurrentTab } = props;
 
+  const logout = event => {
+    event.preventDefault()
+    Auth.logout();
+  }
+
   return (
     <Navbar collapseOnSelect fill activekey={currentTab}>
       <Navbar.Toggle />
@@ -25,7 +30,7 @@ function NavList(props) {
           </Nav.Item>
           {Auth.loggedIn() ? (
             <>
-              <a href='/'> Logout</a>
+              <a href='/' onClick={logout}> Logout</a>
             </>
           ) : (
             <>
