@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Header from './clientpages/header'
 import Home from './clientpages/dashboard'
-import Login from './clientpages/LoginForm'
-import Signup from './clientpages/SignupForm'
+// import Login from './clientpages/LoginForm'
+// import Signup from './clientpages/SignupForm'
 import Tutor from './clientpages/tutor'
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +10,8 @@ import './index.css'
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 import { BrowserRouter as Router } from "react-router-dom"
 import 'react-calendar/dist/Calendar.css';
-import LoginForm from './clientpages/LoginForm'
-import SignupForm from './clientpages/SignupForm'
+// import LoginForm from './clientpages/LoginForm'
+// import SignupForm from './clientpages/SignupForm'
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache()
@@ -26,10 +26,10 @@ function App() {
 				return <Home />;
 			case "tutor":
 				return <Tutor />;
-			case "signup":
-				return <SignupForm />;
-				case "login":
-				return <LoginForm />;
+			// case "signup":
+			// 	return <SignupForm />;
+			// 	case "login":
+			// 	return <LoginForm />;
 			default:
 				return null;
 		}
