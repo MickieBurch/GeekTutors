@@ -7,6 +7,10 @@ body {
   letter-spacing: 1px;
   background-color: #dadada
 }
+a {
+  text-decoration: none;
+  color: black
+}
 .logo {
   margin: 6px 0;
   padding-right: 15px;
@@ -32,4 +36,9 @@ body {
 .main-div {
   height: 100%;
   text-shadow: 1px 1px grey
+}
+button {
+  border: none;
+  background-color: #dadada;
+  padding: 0
 }

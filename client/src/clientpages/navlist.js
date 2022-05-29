@@ -29,9 +29,9 @@ function NavList(props) {
             </Nav.Link>
           </Nav.Item>
           {Auth.loggedIn() ? (
-            <>
-              <a href='/' onClick={logout}> Logout</a>
-            </>
+            <Nav.Link>
+              <button onClick={logout}>Logout</button>
+            </Nav.Link>
           ) : (
             <>
               <Nav.Item>
