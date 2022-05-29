@@ -5,16 +5,30 @@ import Tutor from './clientpages/tutor'
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client"
 import { BrowserRouter as Router } from "react-router-dom"
+import {setContext} from '@apollo/client/link/context'
 import 'react-calendar/dist/Calendar.css';
 import LoginForm from './clientpages/LoginForm'
 import SignupForm from './clientpages/SignupForm'
 
-const client = new ApolloClient({
-  uri: "/graphql",
-  cache: new InMemoryCache()
-})
+const httpLink = createHttpLink({
+	uri: '/graphql'
+  });
+
+const authLink = setContext((_, { headers }) => {
+	const token = localStorage.getItem('id_token');
+	return {
+	  headers: {
+		...headers,
+		authorization: token ? `Bearer ${token}` : '',
+	  },
+	};
+  });
+  const client = new ApolloClient({
+	link: authLink.concat(httpLink),
+	cache: new InMemoryCache()
+  })
 
 function App() {
   const [currentTab, setCurrentTab] = useState("home");
