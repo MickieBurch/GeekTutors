@@ -1,13 +1,15 @@
 import React from "react";
 // import Logo from "../assets/logo/nerd.png";
 import Ronald from "../assets/img/Ronald.jpg"
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import GeekCalendar from "./calendar";
 import Picker from './datepicker';
 
 function Tutor() {
   return (
     <Container>
+      <Row>
+        <Col> 
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={Ronald} />
       <Card.Body>
@@ -47,8 +49,22 @@ function Tutor() {
         </a>
       </div>
     </Card>
-    <GeekCalendar />
+    </Col>
+    <Col>
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={Ronald} />
+      <Card.Body>
+        <Card.Title>Ronald J. Tutor</Card.Title>
+        <Card.Text>Bio</Card.Text>
+        <Card.Text>Ronald is an excellent tutor and french fry guru.</Card.Text>
+      </Card.Body>
+    </Card>
+    </Col>   
+    {/* <GeekCalendar /> */}
+    <Col> 
     <Picker />
+    </Col>
+    </Row>
     </Container>
   );
 }
