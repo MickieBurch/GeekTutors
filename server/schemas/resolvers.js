@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Tutor, Article } = require('../models');
+const { User, Article } = require('../models');
 const { signToken, authMiddleware } = require('../utils/auth');
 
 const resolvers = {
@@ -101,10 +101,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-<<<<<<< HEAD
-  },
-}
-=======
     createArticle: async(parent,{token,name,body,image})=>{
       try {
         const user = authMiddleware(token)
@@ -121,6 +117,5 @@ const resolvers = {
     }
   }
 };
->>>>>>> 161f508c8951df8580001ba0a8467987a0173f6f
 
 module.exports = resolvers;
