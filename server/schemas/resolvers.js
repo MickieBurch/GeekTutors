@@ -46,6 +46,7 @@ const resolvers = {
         if(user){
           return await Article.findById(id)
         }
+        throw new AuthenticationError("invalid token")
       } catch (error) {
         console.log(error);
         return error
