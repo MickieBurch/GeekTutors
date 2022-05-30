@@ -9,11 +9,11 @@ function Dashboard(props) {
     props.setCurrentTab("tutor")
   }
   return (
-    <Container className='mt-5'>
+    <Container className='mt-4'>
       <h1 className="text-center">Available Tutors</h1>
-      <Row className='mt-5'>
-        <Col lg={3} sm={12}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+      <Row className='mt-4'>
+        <Col lg={3} sm={`12`} >
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Ronald J. Tutor</Card.Title>
@@ -28,7 +28,7 @@ function Dashboard(props) {
           </Card>
         </Col>
         <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Robert Tutor</Card.Title>
@@ -43,7 +43,7 @@ function Dashboard(props) {
           </Card>
         </Col>
         <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Rhonda Tutor</Card.Title>
@@ -58,7 +58,7 @@ function Dashboard(props) {
           </Card>
         </Col>
         <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Alec Tutor</Card.Title>
@@ -73,8 +73,8 @@ function Dashboard(props) {
           </Card>
         </Col>
       </Row>
-
     </Container>
+
   );
 }
 

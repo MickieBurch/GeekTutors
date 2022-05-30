@@ -8,6 +8,7 @@ import Dashboard from './clientpages/dashboard';
 import Tutor from './clientpages/tutor';
 import LoginForm from './clientpages/LoginForm';
 import SignupForm from './clientpages/SignupForm';
+import Footer from './componets/Footer'
 
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -56,10 +57,12 @@ function App() {
 			<Router>
 				<Container fluid>
 					<Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
+					<hr></hr>
 				</Container>
 				<Container fluid>
 					<main>{renderTab()}</main>
 				</Container>
+				<Footer />
 			</Router>
 		</ApolloProvider>
 	);
