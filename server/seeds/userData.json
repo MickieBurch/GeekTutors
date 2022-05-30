@@ -4,13 +4,13 @@
         "lastName":"McGee",
         "email":"legitemail@email.com",
         "password":"123123",
-        "isProctor":true
+        "isTutor":true
     },
     {
         "firstName":"Tester",
         "lastName":"McTestFace",
         "email":"legitemail2@email.com",
         "password":"123123",
-        "isProctor":false
+        "isTutor":false
     }
 ]

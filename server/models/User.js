@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Payment = require('./Payment');
 
 const userSchema = new Schema({
   firstName: {
@@ -25,11 +24,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  enrolledSubject:{
+  selectedTutor:{
     type: Schema.Types.ObjectId,
-    ref:"Subject"
+    ref:"Tutor"
   },
-  isProctor:{
+  isTutor:{
     type:Boolean,
     required:true,
     default:false

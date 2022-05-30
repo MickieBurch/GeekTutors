@@ -12,6 +12,10 @@ const articleSchema = new Schema({
     body:{
         type:String,
         required:true
+    },
+    tutorId:{
+        type:Schema.Types.ObjectId,
+        ref:"Tutor"
     }
 })
 const Article=model("Article",articleSchema)
