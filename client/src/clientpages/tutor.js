@@ -1,5 +1,4 @@
 import React from "react";
-// import Logo from "../assets/logo/nerd.png";
 import Ronald from "../assets/img/Ronald.jpg"
 import { Card, Container, Row, Col } from "react-bootstrap";
 import GeekCalendar from "./calendar";
