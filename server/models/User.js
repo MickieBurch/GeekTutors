@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Payment = require('./Payment');
 
 const userSchema = new Schema({
   firstName: {
@@ -33,8 +32,10 @@ const userSchema = new Schema({
     type:Boolean,
     required:true,
     default:false
+  },
+  //savedTutor: [tutorSchema],
   }
-});
+);
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {

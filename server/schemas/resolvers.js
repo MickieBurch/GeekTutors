@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Subject, Article } = require('../models');
+const { User, Subject, Article, Tutor} = require('../models');
 const { signToken, authMiddleware } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -83,7 +83,8 @@ const resolvers = {
         console.log(error);
         return error
       }
-    }
+    },
+ 
   },
   Mutation: {
     createUser: async (parent, {firstName,lastName,email,password}) => {
@@ -120,8 +121,8 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
-    }
-  }
-};
+    },
+  },
+}
 
 module.exports = resolvers;

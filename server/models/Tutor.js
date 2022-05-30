@@ -14,6 +14,10 @@ const tutorSchema = new Schema({
   description: {
     type: String
   },
+  tutorId: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String
   },
