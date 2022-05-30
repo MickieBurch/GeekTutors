@@ -103,13 +103,10 @@ const resolvers = {
     },
     createArticle: async(parent,{token,name,body,image})=>{
       try {
-        const user = await User.findById(token)
-        console.log(user);
+        const user = authMiddleware(token)
         if(user && user.isTutor){
-          const newArticle = await Article.create({name:name,body:body,image:image,tutorId:user._id})
-          console.log(newArticle);
-          const newUser=await User.findByIdAndUpdate(user._id,{$push:{articles:newArticle}})
-          console.log(newUser);
+          const newArticle = await Article.create({name:name,body:body,image:image,tutorId:user.id})
+          const newUser=await User.findByIdAndUpdate(user.id,{$push:{articles:newArticle}})
           return newArticle
         }
         throw new AuthenticationError("invalid user")
