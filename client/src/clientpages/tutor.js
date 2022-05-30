@@ -3,6 +3,7 @@ import Ronald from "../assets/img/Ronald.jpg"
 import { Card, Container, Row, Col } from "react-bootstrap";
 import GeekCalendar from "./calendar";
 import Picker from './datepicker';
+import { MeetingLink } from "./meetingLink";
 
 
 
@@ -64,6 +65,7 @@ function Tutor() {
     {/* <GeekCalendar /> */}
     <Col> 
     <Picker />
+    <MeetingLink />
     </Col>
     </Row>
     </Container>
