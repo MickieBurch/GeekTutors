@@ -64,7 +64,7 @@ function Tutor() {
     </Col>   
     {/* <GeekCalendar /> */}
     <Col> 
-    <Picker />
+    {/* <Picker /> */}
     <MeetingLink />
     </Col>
     </Row>
