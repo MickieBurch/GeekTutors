@@ -1,6 +1,6 @@
 import React from "react";
-import NavList from "../clientpages/navlist";
-import Logo from '../assets/logo/nerd.png'
+import NavList from "../Nav";
+import Logo from '../../assets/logo/nerd.png'
 import {Container, Row } from "react-bootstrap";
 
 

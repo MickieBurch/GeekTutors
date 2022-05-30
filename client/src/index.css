@@ -7,9 +7,8 @@ body {
   letter-spacing: 1px;
   background-color: #dadada
 }
-a {
-  text-decoration: none;
-  color: black
+nav a {
+  margin: 0 30px
 }
 .logo {
   margin: 6px 0;
@@ -41,4 +40,12 @@ button {
   border: none;
   background-color: #dadada;
   padding: 0
+} 
+
+@media screen and (max-width: 500px) {
+  nav a {
+    margin : 0
+  }
+
+  
 }

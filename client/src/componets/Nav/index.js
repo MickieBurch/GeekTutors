@@ -2,7 +2,7 @@ import React from "react";
 // import { Container } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
-import Auth from '../utils/auth'
+import Auth from '../../utils/auth'
 
 function NavList(props) {
   const { currentTab, setCurrentTab } = props;
@@ -13,13 +13,12 @@ function NavList(props) {
   }
 
   return (
-    <Navbar collapseOnSelect fill activekey={currentTab}>
+    <Navbar collapseOnSelect fill activekey={currentTab} >
       <Navbar.Toggle />
-
-      <Navbar.Collapse className="justify-content-evenly">
-        <Nav activeKey={currentTab} onSelect={setCurrentTab}>
+      <Navbar.Collapse className="justify-content-center fs-5">
+        <Nav activeKey={currentTab} onSelect={setCurrentTab} >
           <Nav.Item>
-            <Nav.Link onClick={() => setCurrentTab("home")} eventKey="home">
+            <Nav.Link onClick={() => setCurrentTab("home")} eventKey="home" >
               Home
             </Nav.Link>
           </Nav.Item>

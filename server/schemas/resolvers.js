@@ -1,7 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Tutor, Article } = require('../models');
 const { signToken, authMiddleware } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -10,10 +9,7 @@ const resolvers = {
       try {
         const user= authMiddleware(token)
         if(user){
-          return await User.findById(user._id).populate({
-            path:"Subject",
-            populate:({path:"Article"})
-          })
+          return await User.findById(user._id).populate("artices")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -25,12 +21,7 @@ const resolvers = {
       try {
         const user=true
         if(user){
-            return await User.find().populate({
-            path:"selectedTutor",
-            populate:({
-              path:"articles"
-            })
-          })
+          return await User.find().populate("selectedTutor").populate("articles")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -61,35 +52,19 @@ const resolvers = {
         return error
       }
     },
-    GetArticlesByTutorId:async(parent,{token,Id})=>{
+    GetArticlesByUserId:async(parent,{token,Id})=>{
         try {
           const user = true
           if(user){
-            let articles=await Article.find({tutorId:Id})
-            console.log(articles);
-            return articles
-          }else{
-            throw new AuthenticationError("invalid token")
+            return await Article.find({tutorId:Id})
           }
+          throw new AuthenticationError("invalid token")
         } catch (error) {
           console.log(error);
           return error
         }
-    },
-    GetAllTutors:async(parent,{token})=>{
-      try {
-        const user = true
-        if (user){
-          return await Tutor.find().populate("articles")
-        }else{
-          throw new AuthenticationError("invalid token")
-        }
-      } catch (error) {
-        console.log(error);
-        return error
-      }
-    },
-    
+    }
+  },
   Mutation: {
     createUser: async (parent, {firstName,lastName,email,password}) => {
       const user = await User.create({
@@ -102,11 +77,11 @@ const resolvers = {
 
       return { token, user };
     },
-    enrollStudent: async (parent, {token,subjectId}) => {
+    enrollStudent: async (parent, {token,tutorId}) => {
       try {
         const user=authMiddleware(token)
         if (user) {
-        return await User.findByIdAndUpdate(user.id, {enrolledSubject:subjectId}, { new: true });
+        return await User.findByIdAndUpdate(user.id, {selectedTutor:tutorId}, { new: true });
         }
       throw new AuthenticationError('Not logged in');
       } catch (error) {
