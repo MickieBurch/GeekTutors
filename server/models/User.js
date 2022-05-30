@@ -24,11 +24,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  enrolledSubject:{
+  selectedTutor:{
     type: Schema.Types.ObjectId,
-    ref:"Subject"
+    ref:"Tutor"
   },
-  isProctor:{
+  isTutor:{
     type:Boolean,
     required:true,
     default:false

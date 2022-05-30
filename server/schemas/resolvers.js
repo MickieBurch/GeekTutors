@@ -1,10 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Subject, Article, Tutor} = require('../models');
+const { User, Tutor, Article } = require('../models');
 const { signToken, authMiddleware } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
+    
     GetCurrentUser:async(parent,{token})=>{
       try {
         const user= authMiddleware(token)
@@ -25,7 +26,7 @@ const resolvers = {
         const user=true
         if(user){
             return await User.find().populate({
-            path:"enrolledSubject",
+            path:"selectedTutor",
             populate:({
               path:"articles"
             })
@@ -37,33 +38,9 @@ const resolvers = {
         return error
       }
     },
-    GetAllSubjects:async(parent,{token})=>{
-      try {
-        const user= authMiddleware(token)
-        if(user){
-          return await Subject.find().populate({path:"articles"}).populate({path:"proctor"})
-        }
-        throw new AuthenticationError("invalid token")
-      } catch (error) {
-        console.log(error);
-        return error
-      }
-    },
-    GetSubjectById:async(parent,{token,id})=>{
-      try {
-        const user = authMiddleware(token)
-        if(user){
-          return await Subject.findById(id).populate({path:"articles"}).populate({path:"proctor"})
-        }
-        throw new AuthenticationError("invalid token")
-      } catch (error) {
-        console.log(error);
-        return error
-      }
-    },
     GetAllArticles:async(parent,{token})=>{
       try {
-        const user = authMiddleware(token)
+        const user = true
         if (user){
           return await Article.find()
         }
@@ -84,8 +61,35 @@ const resolvers = {
         return error
       }
     },
- 
-  },
+    GetArticlesByTutorId:async(parent,{token,Id})=>{
+        try {
+          const user = true
+          if(user){
+            let articles=await Article.find({tutorId:Id})
+            console.log(articles);
+            return articles
+          }else{
+            throw new AuthenticationError("invalid token")
+          }
+        } catch (error) {
+          console.log(error);
+          return error
+        }
+    },
+    GetAllTutors:async(parent,{token})=>{
+      try {
+        const user = true
+        if (user){
+          return await Tutor.find().populate("articles")
+        }else{
+          throw new AuthenticationError("invalid token")
+        }
+      } catch (error) {
+        console.log(error);
+        return error
+      }
+    },
+    
   Mutation: {
     createUser: async (parent, {firstName,lastName,email,password}) => {
       const user = await User.create({

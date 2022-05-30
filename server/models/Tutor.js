@@ -1,9 +1,4 @@
-
-const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-
-const articleSchema = new Schema
+const {Schema,model} = require('mongoose');
 
 const tutorSchema = new Schema({
   name: {
@@ -21,12 +16,15 @@ const tutorSchema = new Schema({
   image: {
     type: String
   },
-  articles: [articleSchema]
-    
-
+  articles: [
+    {
+      type:Schema.Types.ObjectId,
+      ref:"Article"
+    }
+  ]
 });
 
 
-const Tutor = mongoose.model('Tutor', tutorSchema);
+const Tutor = model('Tutor', tutorSchema);
 
 module.exports = Tutor;
