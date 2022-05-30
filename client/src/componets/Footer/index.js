@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+
 
 function Footer() {
-    const footLink = ['Twitter','Linkedin', 'Github','placeholder','placeholder','placeholder',]
+    const footLink = ['Twitter','Linkedin', 'Github','Place']
         
 
 
@@ -12,7 +12,7 @@ function Footer() {
             <nav>
                 <ul className='d-flex justify-content-center mt-5'>
                     {footLink.map(link => (
-                        <li className='border-end border-start'><a href={`https://${link}.com/`} className='footer-a'>{link}</a></li>
+                        <li className='border-end border-start' key={link}><a href={`https://${link}.com/`} className='footer-a'>{link}</a></li>
                     ))}
                 </ul>
             </nav>

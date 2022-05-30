@@ -22,6 +22,9 @@ nav a {
   display: flex;
   justify-content: center;
 }
+.logout-btn {
+  background-color: #dadada
+}
 button {
   border: none;
   padding: 0
