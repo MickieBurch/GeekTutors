@@ -15,7 +15,7 @@ const articleSchema = new Schema({
     },
     tutorId:{
         type:Schema.Types.ObjectId,
-        ref:"Tutor"
+        ref:"User"
     }
 })
 const Article=model("Article",articleSchema)

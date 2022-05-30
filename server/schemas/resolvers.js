@@ -32,7 +32,7 @@ const resolvers = {
       try {
         const user = true
         if (user){
-          return await Article.find()
+          return await Article.find().populate("tutorId")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -100,6 +100,23 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    },
+    createArticle: async(parent,{token,name,body,image})=>{
+      try {
+        const user = await User.findById(token)
+        console.log(user);
+        if(user && user.isTutor){
+          const newArticle = await Article.create({name:name,body:body,image:image,tutorId:user._id})
+          console.log(newArticle);
+          const newUser=await User.findByIdAndUpdate(user._id,{$push:{articles:newArticle}})
+          console.log(newUser);
+          return newArticle
+        }
+        throw new AuthenticationError("invalid user")
+      } catch (error) {
+        console.log(error);
+        return error
+      }
     }
   }
 };
