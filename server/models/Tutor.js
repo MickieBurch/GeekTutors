@@ -1,3 +1,4 @@
+/*
 const {Schema,model} = require('mongoose');
 
 const tutorSchema = new Schema({
@@ -24,3 +25,4 @@ const tutorSchema = new Schema({
 const Tutor = model('Tutor', tutorSchema);
 
 module.exports = Tutor;
+*/

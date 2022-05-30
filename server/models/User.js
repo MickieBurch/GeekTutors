@@ -26,15 +26,26 @@ const userSchema = new Schema({
   },
   selectedTutor:{
     type: Schema.Types.ObjectId,
-    ref:"Tutor"
+    ref:"User"
   },
   isTutor:{
     type:Boolean,
     required:true,
     default:false
-  }
+  },
+  description:{
+    type:String
+  },
+  image:{
+    type:String
+  },
+  articles:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"Article"
+    }
+  ]
 });
-
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
