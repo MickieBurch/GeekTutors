@@ -1,0 +1,16 @@
+[
+    {
+        "firstName":"Teacher",
+        "lastName":"McGee",
+        "email":"legitemail@email.com",
+        "password":"123123",
+        "isProctor":true
+    },
+    {
+        "firstName":"Tester",
+        "lastName":"McTestFace",
+        "email":"legitemail2@email.com",
+        "password":"123123",
+        "isProctor":false
+    }
+]
