@@ -4,7 +4,6 @@ const { signToken, authMiddleware } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    
     GetCurrentUser:async(parent,{token})=>{
       try {
         const user= authMiddleware(token)

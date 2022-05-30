@@ -6,10 +6,14 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    selectedTutor: User
-    isTutor: Boolean
+    enrolledSubject: Subject
+    isProctor: Boolean
+  }
+  type Subject{
+    _id: ID
+    name: String
+    proctor: User
     description: String
-    image: String
     articles: [Article]
   }
 
@@ -18,7 +22,6 @@ const typeDefs = gql`
     name: String
     image: String
     body: String
-    tutorId: User
   }
   type Auth {
     token: ID
@@ -27,13 +30,10 @@ const typeDefs = gql`
   
 
   type Query {
-    test: String
     GetAllUsers(token:String!): [User]
     GetCurrentUser(token:String!): User
     GetAllArticles(token:String!): [Article]
     GetArticleById(token:String!,id:ID!): Article
-    GetAllTutors(token:String!): [User]
-    GetArticlesByUserId(token:String!,Id:ID!):[Article]
   }
 
   type Mutation {
