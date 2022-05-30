@@ -12,7 +12,7 @@ function Footer() {
             <nav>
                 <ul className='d-flex justify-content-center mt-5'>
                     {footLink.map(link => (
-                        <li><a href='/' className='footer-a'>{link}</a></li>
+                        <li className='border-end border-start'><a href={`https://${link}.com/`} className='footer-a'>{link}</a></li>
                     ))}
                 </ul>
             </nav>
