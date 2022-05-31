@@ -89,7 +89,7 @@ const resolvers = {
       try {
         const user=authMiddleware(token)
         if (user) {
-        return await User.findByIdAndUpdate(user.id, {selectedTutor:tutorId}, { new: true });
+        return await User.findByIdAndUpdate(user._id, {selectedTutor:tutorId}, { new: true }).populate("selectedTutor");
         }
       throw new AuthenticationError('Not logged in');
       } catch (error) {

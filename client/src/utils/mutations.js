@@ -25,5 +25,20 @@ export const LOGIN = gql`
     }
 `
 
+export const ENROLL_STUDENT = gql`
+    mutation enrollStudent($token:String!,$tutorId:ID!){
+        enrollStudent(token:$token,tutorId:$tutorId){
+        _id
+        firstName
+        lastName
+            selectedTutor{
+            firstName
+            lastName
+            _id
+        } 
+        }
+    }
+`
+
 
 
