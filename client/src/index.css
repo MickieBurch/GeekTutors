@@ -48,19 +48,22 @@ footer li {
   }
 }
 
-<<<<<<< HEAD
-  
+@media screen and (max-width: 1000px) {
+  footer {
+    position: relative !important;
+    margin-top: 30px
+  }
 }
 
 .scheduler {
-  background-color: #b1b0b0;
+  background-color: grey;
   padding: 3rem 2rem 3rem 2rem;
   border-radius: 2%;
 }
 
 .schedulertextarea {
   width: 25rem;
-  height: 20rem;
+  height: 10rem;
   border-radius: 2%;
 }
 
@@ -73,11 +76,4 @@ footer li {
 .tutorbio {
   height: 28.5rem;
   border-radius: 2%;
-=======
-@media screen and (max-width: 1000px) {
-  footer {
-    position: relative !important;
-    margin-top: 30px
-  }
->>>>>>> c871d463e583d1ca0a30ee1918afd7a9945a27aa
 }
