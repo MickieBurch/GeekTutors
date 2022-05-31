@@ -1,14 +1,10 @@
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import Ronald from "../assets/img/Ronald.jpg";
 import Auth from '../utils/auth'
+import Cards from '../componets/Card'
 
 
-function Dashboard(props) {
-  function handleSaveTutor() {
-    //mutation to add tutor to user
-    props.setCurrentTab("tutor")
-  }
+function Dashboard({setCurrentTab}) {
   return (
     <Container className='mt-4'>
       {Auth.loggedIn() ? (
@@ -18,66 +14,7 @@ function Dashboard(props) {
       )}
       
       <Row className='mt-4'>
-        <Col lg={3} sm={`12`} >
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
-            <Card.Img variant="top" src={Ronald} />
-            <Card.Body>
-              <Card.Title>Ronald J. Tutor</Card.Title>
-              <Card.Text>Subjects offered:</Card.Text>
-            </Card.Body>
-            <div className="list-group">
-              <li className="list-group-item list-group-item">HTML</li>
-              <li className="list-group-item list-group-item-disabled">CSS</li>
-              <li className="list-group-item list-group-item-disabled">Javascript</li>
-            </div>
-            <button onClick={(e) => { e.preventDefault(); handleSaveTutor() }}>Save</button>
-          </Card>
-        </Col>
-        <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto mt-5'>
-            <Card.Img variant="top" src={Ronald} />
-            <Card.Body>
-              <Card.Title>Robert Tutor</Card.Title>
-              <Card.Text>Subjects offered:</Card.Text>
-            </Card.Body>
-            <div className="list-group">
-              <li className="list-group-item list-group-item-disabled">React</li>
-              <li className="list-group-item list-group-item-disabled">C#</li>
-              <li className="list-group-item list-group-item-disabled">Typescript</li>
-            </div>
-            <button onClick={(e) => { e.preventDefault(); handleSaveTutor() }}>Save</button>
-          </Card>
-        </Col>
-        <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
-            <Card.Img variant="top" src={Ronald} />
-            <Card.Body>
-              <Card.Title>Rhonda Tutor</Card.Title>
-              <Card.Text>Subjects offered:</Card.Text>
-            </Card.Body>
-            <div className="list-group">
-              <li className="list-group-item list-group-item-disabled">HTML</li>
-              <li className="list-group-item list-group-item-disabled">Javascript</li>
-              <li className="list-group-item list-group-item-disabled">CSS</li>
-            </div>
-            <button onClick={(e) => { e.preventDefault(); handleSaveTutor() }}>Save</button>
-          </Card>
-        </Col>
-        <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
-            <Card.Img variant="top" src={Ronald} />
-            <Card.Body>
-              <Card.Title>Alec Tutor</Card.Title>
-              <Card.Text>Subjects offered:</Card.Text>
-            </Card.Body>
-            <div className="list-group">
-              <li className="list-group-item list-group-item-disabled">MongoDb</li>
-              <li className="list-group-item list-group-item-disabled">SQL</li>
-              <li className="list-group-item list-group-item-disabled">Node.js</li>
-            </div>
-            <button onClick={(e) => { e.preventDefault(); handleSaveTutor() }}>Save</button>
-          </Card>
-        </Col>
+        <Cards setCurrentTab={setCurrentTab}/>
       </Row>
     </Container>
 
