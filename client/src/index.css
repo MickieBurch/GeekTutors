@@ -49,3 +49,26 @@ button {
 
   
 }
+
+.scheduler {
+  background-color: #b1b0b0;
+  padding: 3rem 2rem 3rem 2rem;
+  border-radius: 2%;
+}
+
+.schedulertextarea {
+  width: 25rem;
+  height: 20rem;
+  border-radius: 2%;
+}
+
+.tutorcard {
+ 
+  height: 26rem;
+  border-radius: 2%;
+}
+
+.tutorbio {
+  height: 28.5rem;
+  border-radius: 2%;
+}

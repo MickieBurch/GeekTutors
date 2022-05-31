@@ -1,8 +1,6 @@
 import React from "react";
 import Ronald from "../assets/img/Ronald.jpg"
-import { Card, Container, Row, Col } from "react-bootstrap";
-import GeekCalendar from "./calendar";
-import Picker from './datepicker';
+import { Card, Container, Row, Col } from "react-bootstrap"
 import { MeetingLink } from "./meetingLink";
 
 
@@ -12,7 +10,7 @@ function Tutor() {
     <Container>
       <Row>
         <Col> 
-    <Card style={{ width: "18rem" }}>
+    <Card className="tutorcard" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={Ronald} />
       <Card.Body>
         <Card.Title>Ronald J. Tutor</Card.Title>
@@ -53,7 +51,7 @@ function Tutor() {
     </Card>
     </Col>
     <Col>
-    <Card style={{ width: "18rem" }}>
+    <Card className="tutorbio" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={Ronald} />
       <Card.Body>
         <Card.Title>Ronald J. Tutor</Card.Title>
@@ -62,9 +60,7 @@ function Tutor() {
       </Card.Body>
     </Card>
     </Col>   
-    {/* <GeekCalendar /> */}
     <Col> 
-    {/* <Picker /> */}
     <MeetingLink />
     </Col>
     </Row>
