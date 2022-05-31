@@ -14,6 +14,7 @@ function Dashboard(props) {
           variables:{token,tutorId}
         })
         console.log("updatedUser:",updatedUser);
+        props.setCurrentTab("tutor")
       } catch (error) {
         console.log(error);
       }

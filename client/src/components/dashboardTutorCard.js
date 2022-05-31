@@ -8,8 +8,7 @@ export default function TutorCard(props){
             if(Auth.loggedIn()){
                 return <button onClick={(e) => {
                     e.preventDefault(); 
-                    console.log("enrolling student: ",props.enrollStudentFunction(props.element._id)); 
-                    props.props.setCurrentTab("tutor")
+                    const updatedUser=props.enrollStudentFunction(props.element._id)
                 }}>Save</button>
             }
         } catch (error) {

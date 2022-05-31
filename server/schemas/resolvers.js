@@ -8,7 +8,10 @@ const resolvers = {
       try {
         const user= authMiddleware(token)
         if(user){
-          return await User.findById(user._id).populate("artices")
+          return await User.findById(user._id).populate("articles").populate({
+            path:"selectedTutor",
+            populate:"articles"
+          })
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
