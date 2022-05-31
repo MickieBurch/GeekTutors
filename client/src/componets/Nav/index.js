@@ -29,7 +29,7 @@ function NavList(props) {
           </Nav.Item>
           {Auth.loggedIn() ? (
             <Nav.Link>
-              <button onClick={logout}>Logout</button>
+              <button type='button' className='logout-btn' onClick={logout}>Logout</button>
             </Nav.Link>
           ) : (
             <>

@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Card, CardGroup, Row, Col } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import Ronald from "../assets/img/Ronald.jpg";
+import Auth from '../utils/auth'
 
 
 function Dashboard(props) {
@@ -9,11 +10,16 @@ function Dashboard(props) {
     props.setCurrentTab("tutor")
   }
   return (
-    <Container className='mt-5'>
-      <h1 className="text-center">Available Tutors</h1>
-      <Row className='mt-5'>
-        <Col lg={3} sm={12}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+    <Container className='mt-4'>
+      {Auth.loggedIn() ? (
+        <h1 className="text-center">Available Tutors</h1>
+      ) : (
+        <h1 className='text-center'>Create an Account to Schedule a Session</h1>
+      )}
+      
+      <Row className='mt-4'>
+        <Col lg={3} sm={`12`} >
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Ronald J. Tutor</Card.Title>
@@ -28,7 +34,7 @@ function Dashboard(props) {
           </Card>
         </Col>
         <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Robert Tutor</Card.Title>
@@ -43,7 +49,7 @@ function Dashboard(props) {
           </Card>
         </Col>
         <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Rhonda Tutor</Card.Title>
@@ -58,7 +64,7 @@ function Dashboard(props) {
           </Card>
         </Col>
         <Col lg={3}>
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto'>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Alec Tutor</Card.Title>
@@ -73,8 +79,8 @@ function Dashboard(props) {
           </Card>
         </Col>
       </Row>
-
     </Container>
+
   );
 }
 

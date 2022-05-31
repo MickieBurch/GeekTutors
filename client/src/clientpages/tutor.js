@@ -1,9 +1,11 @@
 import React from "react";
 import Ronald from "../assets/img/Ronald.jpg"
+<<<<<<< HEAD
 import { Card, Container, Row, Col } from "react-bootstrap"
+=======
+import { Card, Container, Row, Col } from "react-bootstrap";
+>>>>>>> c871d463e583d1ca0a30ee1918afd7a9945a27aa
 import { MeetingLink } from "./meetingLink";
-
-
 
 function Tutor() {
   return (
