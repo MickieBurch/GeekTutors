@@ -11,6 +11,7 @@ const typeDefs = gql`
     description: String
     image: String
     articles: [Article]
+    subjectsOffered:[String]
   }
 
   type Article{
@@ -30,7 +31,7 @@ const typeDefs = gql`
     GetCurrentUser(token:String!): User
     GetAllArticles(token:String!): [Article]
     GetArticleById(token:String!,id:ID!): Article
-    GetAllTutors(token:String!): [User]
+    GetAllTutors: [User]
     GetArticlesByUserId(token:String!,Id:ID!):[Article]
   }
 
