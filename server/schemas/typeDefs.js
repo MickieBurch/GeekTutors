@@ -40,6 +40,7 @@ const typeDefs = gql`
     enrollStudent(token:String!,tutorId:ID!): User
     login(email: String!, password: String!): Auth
     createArticle(token:String!,name:String!,body:String!,image:String!): Article
+    unenrollStudent(token:String!,tutorId:ID!): User
   }
 `;
 

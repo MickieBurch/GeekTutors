@@ -125,6 +125,18 @@ const resolvers = {
         console.log(error);
         return error
       }
+    },
+    unenrollStudent: async(parent,{token,tutorId})=>{
+      try {
+        const user = authMiddleware(token)
+        if (user){
+          return await User.findByIdAndUpdate(user._id,{$set:{selectedTutor:null}})
+        }
+        throw new AuthenticationError("invalid token")
+      } catch (error) {
+        console.log(error);
+        return error
+      }
     }
   }
 };
