@@ -6,10 +6,7 @@ import Auth from '../../utils/auth'
 // import { useQuery } from '@apollo/client';
 
 function Cards({setCurrentTab}) {
-
- 
   
-
     function handleSaveTutor() {
         //mutation to add tutor to user
        setCurrentTab("tutor")
