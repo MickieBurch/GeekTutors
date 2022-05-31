@@ -3,6 +3,11 @@ import { Container, Card, Row, Col } from "react-bootstrap";
 import Auth from "../utils/auth"
 export default function TutorCard(props){
     console.log("imcoming props: ",props);
+    function renderSaveButton(){
+        if(Auth.loggedIn()){
+            return <button onClick={(e) => { e.preventDefault(); }}>Save</button>
+        }
+    }
     return(
         <Col lg={3} sm={`12`} >
           <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
@@ -14,8 +19,7 @@ export default function TutorCard(props){
             <div className="list-group">
                 {props.subjectsOffered.map(element=>(<li className="list-group-item list-group-item-disabled">{element}</li>))}
             </div>
-            {Auth.loggedIn() ? <button onClick={(e) => { e.preventDefault(); }}>Save</button>: {}}
-            
+            {renderSaveButton()}
           </Card>
         </Col>
     )
