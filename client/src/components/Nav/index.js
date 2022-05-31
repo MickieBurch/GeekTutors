@@ -22,11 +22,16 @@ function NavList(props) {
               Home
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link onClick={() => setCurrentTab("tutor")} eventKey="tutor">
-              Tutor
-            </Nav.Link>
-          </Nav.Item>
+          {Auth.loggedIn() ? (
+            <Nav.Item>
+              <Nav.Link onClick={() => setCurrentTab("tutor")} eventKey="tutor">
+                Tutor
+              </Nav.Link>
+            </Nav.Item>
+          ) : (
+            null
+          )}
+
           {Auth.loggedIn() ? (
             <Nav.Link>
               <button type='button' className='logout-btn' onClick={logout}>Logout</button>
@@ -43,7 +48,7 @@ function NavList(props) {
                   Login
                 </Nav.Link>
               </Nav.Item>
-              </>
+            </>
           )}
         </Nav>
       </Navbar.Collapse>

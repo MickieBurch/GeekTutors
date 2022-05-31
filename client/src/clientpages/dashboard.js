@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import Ronald from "../assets/img/Ronald.jpg";
 import Auth from '../utils/auth'
 import {GET_ALL_TUTORS} from "../utils/queries"
 import dashboardTutorCard from "../components/dashboardTutorCard"
