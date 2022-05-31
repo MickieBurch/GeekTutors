@@ -1,10 +1,20 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import Auth from '../utils/auth'
-import Cards from '../components/Card/'
+import {GET_ALL_TUTORS} from "../utils/queries"
+import dashboardTutorCard from "../components/dashboardTutorCard"
+function Dashboard(props) {
+  function handleSaveTutor() {
+    //mutation to add tutor to user
+    //ARE YOU SURE? THIS LOOKS LIKE A STATE??? -Alec
+    props.setCurrentTab("tutor")
+  }
+  const {loading, error, data}=useQuery(GET_ALL_TUTORS)
+  if (loading) return "LOADING..."
+  if (error) return `ERROR: ${error}`
+  console.log(data.GetAllTutors);
 
-
-function Dashboard({setCurrentTab}) {
   return (
     <Container className='mt-4'>
       {Auth.loggedIn() ? (
@@ -12,9 +22,8 @@ function Dashboard({setCurrentTab}) {
       ) : (
         <h1 className='text-center'>Create an Account to Schedule a Session</h1>
       )}
-      
       <Row className='mt-4'>
-        <Cards setCurrentTab={setCurrentTab}/>
+        {data.GetAllTutors.map(element=>(dashboardTutorCard(element)))}
       </Row>
     </Container>
 
