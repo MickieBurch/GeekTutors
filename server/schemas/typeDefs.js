@@ -11,6 +11,7 @@ const typeDefs = gql`
     description: String
     image: String
     articles: [Article]
+    subjectsOffered:[String]
   }
 
   type Article{

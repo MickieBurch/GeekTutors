@@ -4,7 +4,13 @@
         "lastName":"McGee",
         "email":"legitemail@email.com",
         "password":"123123",
-        "isTutor":true
+        "isTutor":true,
+        "subjectsOffered":[
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "NPM"
+        ]
     },
     {
         "firstName":"Tester",
