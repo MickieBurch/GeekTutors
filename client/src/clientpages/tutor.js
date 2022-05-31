@@ -1,10 +1,6 @@
 import React from "react";
 import Ronald from "../assets/img/Ronald.jpg"
-<<<<<<< .merge_file_a27032
-import { Card, Container, Row, Col } from "react-bootstrap";
-=======
 import { Card, Container, Row, Col } from "react-bootstrap"
->>>>>>> .merge_file_a31576
 import { MeetingLink } from "./meetingLink";
 
 function Tutor() {
