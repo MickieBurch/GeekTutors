@@ -8,7 +8,7 @@ function Tutor() {
     <Container>
       <Row className='mt-5'>
         <Col>
-          <Card style={{ width: "18rem" }}>
+          <Card className="tutorcard" style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Ronald J. Tutor</Card.Title>
@@ -49,7 +49,7 @@ function Tutor() {
           </Card>
         </Col>
         <Col>
-          <Card style={{ width: "18rem" }}>
+          <Card className="tutorbio" style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Ronald} />
             <Card.Body>
               <Card.Title>Ronald J. Tutor</Card.Title>
