@@ -59,9 +59,9 @@ export const MeetingLink = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Message</Form.Label>
-            <textarea className="schedulertextarea" type="text-area" rows="5" placeholder="Enter message" />
+            <textarea className="schedulertextarea" type="text-area" rows="5" placeholder="Enter message" name="message"/>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onSubmit={alert("Email Submitted")}>
             Submit
           </Button>
         </Form>
