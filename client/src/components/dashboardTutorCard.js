@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Card, Row, Col } from "react-bootstrap";
-
+import Auth from "../utils/auth"
 export default function TutorCard(props){
     console.log("imcoming props: ",props);
     return(
@@ -14,7 +14,8 @@ export default function TutorCard(props){
             <div className="list-group">
                 {props.subjectsOffered.map(element=>(<li className="list-group-item list-group-item-disabled">{element}</li>))}
             </div>
-            <button onClick={(e) => { e.preventDefault(); }}>Save</button>
+            {Auth.loggedIn() ? <button onClick={(e) => { e.preventDefault(); }}>Save</button>: {}}
+            
           </Card>
         </Col>
     )
