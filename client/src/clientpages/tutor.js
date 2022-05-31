@@ -19,7 +19,7 @@ function Tutor() {
             </Card.Body>
             <div className="list-group">
               <a
-                href="https://github.com/MickieBurch/GeekTutors" npm
+                href="https://github.com/MickieBurch/GeekTutors" 
                 className="list-group-item list-group-item-action"
               >
                 Cras justo odio

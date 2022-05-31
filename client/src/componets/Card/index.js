@@ -3,14 +3,11 @@ import { Col, Card } from 'react-bootstrap'
 import Ronald from '../../assets/img/Ronald.jpg'
 import Auth from '../../utils/auth'
 
-import { useQuery } from '@apollo/client';
-import { GET_TUTORS } from '../../utils/queries'
-
+// import { useQuery } from '@apollo/client';
 
 function Cards({setCurrentTab}) {
 
-    const { data: tutors } = useQuery(GET_TUTORS)
-    console.log(tutors)
+ 
   
 
     function handleSaveTutor() {
