@@ -28,6 +28,14 @@ const resolvers = {
         return error
       }
     },
+    GetAllTutors:async(parent)=>{
+      try {
+        return await User.find({isTutor:true}).populate("articles")
+      } catch (error) {
+        console.log(error);
+        return error
+      }
+    },
     GetAllArticles:async(parent,{token})=>{
       try {
         const user = true
