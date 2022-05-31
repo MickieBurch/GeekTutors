@@ -40,5 +40,17 @@ export const ENROLL_STUDENT = gql`
     }
 `
 
-
-
+export const UNENROLL_STUDENT = gql`
+    mutation unenrollStudent($token:String!,$tutorId:ID!){
+        unenrollStudent(token:$token,tutorId:$tutorId){
+        _id
+        firstName
+        lastName
+            selectedTutor{
+            firstName
+            lastName
+            _id
+        } 
+        }
+    }
+`
