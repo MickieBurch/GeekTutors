@@ -58,9 +58,9 @@ function Tutor() {
             </Card.Body>
           </Card>
         </Col>
-        {/* <GeekCalendar /> */}
+       
         <Col>
-          <Picker />
+          <MeetingLink />
         </Col>
       </Row>
     </Container>

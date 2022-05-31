@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import Auth from '../utils/auth'
-import Cards from '../componets/Card'
+import Cards from '../components/Card/'
 
 
 function Dashboard({setCurrentTab}) {
