@@ -1,6 +1,10 @@
 import React from "react";
 import Ronald from "../assets/img/Ronald.jpg"
+<<<<<<< .merge_file_a27032
 import { Card, Container, Row, Col } from "react-bootstrap";
+=======
+import { Card, Container, Row, Col } from "react-bootstrap"
+>>>>>>> .merge_file_a31576
 import { MeetingLink } from "./meetingLink";
 
 function Tutor() {
@@ -8,7 +12,7 @@ function Tutor() {
     <Container>
       <Row>
         <Col> 
-    <Card style={{ width: "18rem" }}>
+    <Card className="tutorcard" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={Ronald} />
       <Card.Body>
         <Card.Title>Ronald J. Tutor</Card.Title>
@@ -49,7 +53,7 @@ function Tutor() {
     </Card>
     </Col>
     <Col>
-    <Card style={{ width: "18rem" }}>
+    <Card className="tutorbio" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={Ronald} />
       <Card.Body>
         <Card.Title>Ronald J. Tutor</Card.Title>
