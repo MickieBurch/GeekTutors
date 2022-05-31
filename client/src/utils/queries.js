@@ -11,5 +11,13 @@ export const QUERY_ME = gql`
 `;
 
 export const GET_ALL_TUTORS=gql`
-  
+query GetAllTutors{
+  GetAllTutors{
+    _id
+    firstName
+    lastName
+    image
+    subjectsOffered
+  }
+}
 `
