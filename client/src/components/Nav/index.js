@@ -7,7 +7,7 @@ import Auth from '../../utils/auth'
 import {GET_CURRENT_USER} from "../../utils/queries"
 function NavList(props) {
   const { currentTab, setCurrentTab } = props;
-  const {loading,error,data}=useQuery(GET_CURRENT_USER,{variables:{token:Auth.getToken()}})
+  const {loading,error,data}=useQuery(GET_CURRENT_USER,{variables:{token:Auth.getToken()||"GUEST"}})
   if (loading) return "LOADING..."
   if (error) console.log(error);
   console.log(data);
