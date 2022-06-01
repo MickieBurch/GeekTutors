@@ -64,6 +64,11 @@ footer li {
   border-radius: 2%;
 }
 
+.tutorarticle {
+  height: 30rem;
+  border-radius: 2%;
+}
+
 @media screen and (max-width: 600px) {
   nav a {
     margin : 0
