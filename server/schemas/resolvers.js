@@ -8,7 +8,7 @@ const resolvers = {
       try {
         const user= authMiddleware(token)
         if(user){
-          return await User.findById(user._id).populate("artices")
+          return await User.findById(user._id).populate("articles")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -52,18 +52,18 @@ const resolvers = {
         return error
       }
     },
-    GetArticlesByUserId:async(parent,{token,Id})=>{
-        try {
-          const user = true
-          if(user){
-            return await Article.find({tutorId:Id})
-          }
-          throw new AuthenticationError("invalid token")
-        } catch (error) {
-          console.log(error);
-          return error
-        }
-    }
+    // GetArticlesByUserId:async(parent,{token,Id})=>{
+    //     try {
+    //       const user = true
+    //       if(user){
+    //         return await Article.find({tutorId:Id})
+    //       }
+    //       throw new AuthenticationError("invalid token")
+    //     } catch (error) {
+    //       console.log(error);
+    //       return error
+    //     }
+    // }
   },
   Mutation: {
     createUser: async (parent, {firstName,lastName,email,password}) => {
