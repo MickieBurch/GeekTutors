@@ -1,12 +1,9 @@
 import React from "react";
-import NavList from "../clientpages/navlist";
-import Logo from '../assets/logo/nerd.png'
+import NavList from "../Nav";
+import Logo from '../../assets/logo/nerd.png'
 import {Container, Row } from "react-bootstrap";
-
-
 function Header(props) {
 	const {currentTab, setCurrentTab} = props;
-
 	return (
 		<Container fluid className="p-0">
 			<Row>

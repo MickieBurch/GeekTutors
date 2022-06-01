@@ -3,11 +3,13 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@ap
 import { BrowserRouter as Router } from "react-router-dom";
 import { setContext } from '@apollo/client/link/context';
 
-import Header from './clientpages/header';
+import Header from './components/Header/';
 import Dashboard from './clientpages/dashboard';
 import Tutor from './clientpages/tutor';
 import LoginForm from './clientpages/LoginForm';
 import SignupForm from './clientpages/SignupForm';
+import Footer from './components/Footer'
+import Article from "./clientpages/article"
 
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,17 +37,19 @@ const client = new ApolloClient({
 
 function App() {
 	const [currentTab, setCurrentTab] = useState("home");
-
+	const [currentArticle,setCurrentArticle]=useState(null)
 	const renderTab = () => {
 		switch (currentTab) {
 			case "home":
 				return <Dashboard setCurrentTab={setCurrentTab} />;
 			case "tutor":
-				return <Tutor />;
+				return <Tutor setCurrentTab={setCurrentTab} setCurrentArticle={setCurrentArticle}/>;
 			case "signup":
 				return <SignupForm />;
 			case "login":
 				return <LoginForm />;
+			case "article":
+				return <Article currentArticle={currentArticle}/>
 			default:
 				return null;
 		}
@@ -56,10 +60,12 @@ function App() {
 			<Router>
 				<Container fluid>
 					<Header currentTab={currentTab} setCurrentTab={setCurrentTab}></Header>
+					<hr></hr>
 				</Container>
 				<Container fluid>
 					<main>{renderTab()}</main>
 				</Container>
+				<Footer />
 			</Router>
 		</ApolloProvider>
 	);

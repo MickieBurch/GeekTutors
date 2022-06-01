@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Payment = require('./Payment');
 
 const userSchema = new Schema({
   firstName: {
@@ -25,17 +24,33 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  enrolledSubject:{
+  selectedTutor:{
     type: Schema.Types.ObjectId,
-    ref:"Subject"
+    ref:"User"
   },
-  isProctor:{
+  isTutor:{
     type:Boolean,
     required:true,
     default:false
-  }
+  },
+  description:{
+    type:String
+  },
+  image:{
+    type:String
+  },
+  articles:[
+    {
+      type:Schema.Types.ObjectId,
+      ref:"Article"
+    }
+  ],
+  subjectsOffered:[
+    {
+      type:String
+    }
+  ]
 });
-
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {

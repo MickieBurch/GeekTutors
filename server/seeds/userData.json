@@ -2,15 +2,39 @@
     {
         "firstName":"Teacher",
         "lastName":"McGee",
+        "image":"https://cdn.discordapp.com/attachments/886781304362926090/980995588831211540/e7f0bc48f1fc7fe2d3d1af186d1789b442322a8587900b2db8cbde2e9c6bd41c_1.jpg.jpg",
         "email":"legitemail@email.com",
+        "description":"literally the best teacher known to man. Just look at me. I can SEE education :)",
         "password":"123123",
-        "isProctor":true
+        "isTutor":true,
+        "subjectsOffered":[
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "NPM"
+        ]
     },
     {
         "firstName":"Tester",
         "lastName":"McTestFace",
         "email":"legitemail2@email.com",
         "password":"123123",
-        "isProctor":false
+        "isTutor":false
+    },
+
+    {
+        "firstName":"Chris",
+        "lastName":"Snyder",
+        "image":"https://img.freepik.com/free-photo/serious-teacher-glasses-standing-blackboard-hand-hand_23-2148201001.jpg?size=626&ext=jpg",
+        "email":"legitemail@email.com",
+        "description":"Web development tutor with a wide variety of tutoring methods",
+        "password":"123123",
+        "isTutor":true,
+        "subjectsOffered":[
+            "HTML",
+            "React",
+            "Javascript",
+            "Nodejs"
+        ]
     }
 ]

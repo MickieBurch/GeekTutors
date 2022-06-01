@@ -6,15 +6,12 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    enrolledSubject: Subject
-    isProctor: Boolean
-  }
-  type Subject{
-    _id: ID
-    name: String
-    proctor: User
+    selectedTutor: User
+    isTutor: Boolean
     description: String
+    image: String
     articles: [Article]
+    subjectsOffered:[String]
   }
 
   type Article{
@@ -22,6 +19,7 @@ const typeDefs = gql`
     name: String
     image: String
     body: String
+    tutorId: User
   }
   type Auth {
     token: ID
@@ -33,14 +31,16 @@ const typeDefs = gql`
     GetCurrentUser(token:String!): User
     GetAllArticles(token:String!): [Article]
     GetArticleById(token:String!,id:ID!): Article
-    GetAllSubjects(token:String!): [Subject]
-    GetSubjectById(token:String!,id:ID!): Subject
+    GetAllTutors: [User]
+    GetArticlesByUserId(token:String!,Id:ID!):[Article]
   }
 
   type Mutation {
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    enrollStudent(token:String!,subjectId:ID!): User
+    enrollStudent(token:String!,tutorId:ID!): User
     login(email: String!, password: String!): Auth
+    createArticle(token:String!,name:String!,body:String!,image:String!): Article
+    unenrollStudent(token:String!,tutorId:ID!): User
   }
 `;
 

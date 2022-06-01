@@ -1,7 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Subject, Article } = require('../models');
+const { User, Tutor, Article } = require('../models');
 const { signToken, authMiddleware } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
@@ -9,9 +8,9 @@ const resolvers = {
       try {
         const user= authMiddleware(token)
         if(user){
-          return await User.findById(user._id).populate({
-            path:"Subject",
-            populate:({path:"Article"})
+          return await User.findById(user._id).populate("articles").populate({
+            path:"selectedTutor",
+            populate:"articles"
           })
         }
         throw new AuthenticationError("invalid token")
@@ -24,12 +23,7 @@ const resolvers = {
       try {
         const user=true
         if(user){
-            return await User.find().populate({
-            path:"enrolledSubject",
-            populate:({
-              path:"articles"
-            })
-          })
+          return await User.find().populate("selectedTutor").populate("articles")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -37,25 +31,9 @@ const resolvers = {
         return error
       }
     },
-    GetAllSubjects:async(parent,{token})=>{
+    GetAllTutors:async(parent)=>{
       try {
-        const user= authMiddleware(token)
-        if(user){
-          return await Subject.find().populate({path:"articles"}).populate({path:"proctor"})
-        }
-        throw new AuthenticationError("invalid token")
-      } catch (error) {
-        console.log(error);
-        return error
-      }
-    },
-    GetSubjectById:async(parent,{token,id})=>{
-      try {
-        const user = authMiddleware(token)
-        if(user){
-          return await Subject.findById(id).populate({path:"articles"}).populate({path:"proctor"})
-        }
-        throw new AuthenticationError("invalid token")
+        return await User.find({isTutor:true}).populate("articles")
       } catch (error) {
         console.log(error);
         return error
@@ -63,9 +41,9 @@ const resolvers = {
     },
     GetAllArticles:async(parent,{token})=>{
       try {
-        const user = authMiddleware(token)
+        const user = true
         if (user){
-          return await Article.find()
+          return await Article.find().populate("tutorId")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -77,12 +55,25 @@ const resolvers = {
       try {
         const user = authMiddleware(token)
         if(user){
-          return await Article.findById(id)
+          return await Article.findById(id).populate("tutorId")
         }
+        throw new AuthenticationError("invalid token")
       } catch (error) {
         console.log(error);
         return error
       }
+    },
+    GetArticlesByUserId:async(parent,{token,Id})=>{
+        try {
+          const user = true
+          if(user){
+            return await Article.find({tutorId:Id})
+          }
+          throw new AuthenticationError("invalid token")
+        } catch (error) {
+          console.log(error);
+          return error
+        }
     }
   },
   Mutation: {
@@ -97,11 +88,11 @@ const resolvers = {
 
       return { token, user };
     },
-    enrollStudent: async (parent, {token,subjectId}) => {
+    enrollStudent: async (parent, {token,tutorId}) => {
       try {
         const user=authMiddleware(token)
         if (user) {
-        return await User.findByIdAndUpdate(user.id, {enrolledSubject:subjectId}, { new: true });
+        return await User.findByIdAndUpdate(user._id, {selectedTutor:tutorId}, { new: true }).populate("selectedTutor");
         }
       throw new AuthenticationError('Not logged in');
       } catch (error) {
@@ -120,6 +111,32 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    },
+    createArticle: async(parent,{token,name,body,image})=>{
+      try {
+        const user = authMiddleware(token)
+        if(user && user.isTutor){
+          const newArticle = await Article.create({name:name,body:body,image:image,tutorId:user.id})
+          const newUser=await User.findByIdAndUpdate(user.id,{$push:{articles:newArticle}})
+          return newArticle
+        }
+        throw new AuthenticationError("invalid user")
+      } catch (error) {
+        console.log(error);
+        return error
+      }
+    },
+    unenrollStudent: async(parent,{token,tutorId})=>{
+      try {
+        const user = authMiddleware(token)
+        if (user){
+          return await User.findByIdAndUpdate(user._id,{$set:{selectedTutor:null}})
+        }
+        throw new AuthenticationError("invalid token")
+      } catch (error) {
+        console.log(error);
+        return error
+      }
     }
   }
 };
