@@ -22,6 +22,9 @@ nav a {
   display: flex;
   justify-content: center;
 }
+.logout-btn {
+  background-color: #dadada
+}
 button {
   border: none;
   padding: 0
@@ -45,9 +48,26 @@ footer li {
   }
 }
 
-@media screen and (max-width: 1000px) {
-  footer {
-    position: relative !important;
-    margin-top: 30px
-  }
+
+.scheduler {
+  background-color: grey;
+  padding: 3rem 2rem 3rem 2rem;
+  border-radius: 2%;
+}
+
+.schedulertextarea {
+  width: 25rem;
+  height: 10rem;
+  border-radius: 2%;
+}
+
+.tutorcard {
+ 
+  height: 30rem;
+  border-radius: 2%;
+}
+
+.tutorbio {
+  height: 30rem;
+  border-radius: 2%;
 }

@@ -9,7 +9,8 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "seed": "cd server && npm run seed && cd ../"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "jsonwebtoken": "^8.5.1",
     "stripe": "^9.4.0"
   }

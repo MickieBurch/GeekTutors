@@ -44,6 +44,11 @@ const userSchema = new Schema({
       type:Schema.Types.ObjectId,
       ref:"Article"
     }
+  ],
+  subjectsOffered:[
+    {
+      type:String
+    }
   ]
 });
 // set up pre-save middleware to create password
