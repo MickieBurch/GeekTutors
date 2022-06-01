@@ -35,7 +35,7 @@ function Dashboard(props) {
   const userQuery = useQuery(GET_CURRENT_USER,{variables:{token:Auth.getToken()}})
   const tutorQuery=useQuery(GET_ALL_TUTORS)
   if (userQuery.loading||tutorQuery.loading) return "LOADING"
-  if (userQuery.error) console.log(userQuery.error);
+  if (userQuery.error) console.log(JSON.stringify(userQuery.error));
   if (tutorQuery.error) console.log(tutorQuery.error);
   return (
     <Container className='mt-4'>
