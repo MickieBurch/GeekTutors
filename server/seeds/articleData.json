@@ -8,5 +8,15 @@
         "name":"HTML, NPM, and Javascript!",
         "image":"https://img.freepik.com/free-photo/serious-teacher-glasses-standing-blackboard-hand-hand_23-2148201001.jpg?size=626&ext=jpg",
         "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
+    },
+    {
+        "name":"HTML, CSS, and React",
+        "image":"https://img.freepik.com/free-photo/serious-teacher-glasses-standing-blackboard-hand-hand_23-2148201001.jpg?size=626&ext=jpg",
+        "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
+    },
+    {
+        "name":"How to use Word professionally",
+        "image":"https://img.freepik.com/free-photo/serious-teacher-glasses-standing-blackboard-hand-hand_23-2148201001.jpg?size=626&ext=jpg",
+        "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
     }
 ]
