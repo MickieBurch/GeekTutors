@@ -55,7 +55,7 @@ const resolvers = {
       try {
         const user = authMiddleware(token)
         if(user){
-          return await Article.findById(id)
+          return await Article.findById(id).populate("tutorId")
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {

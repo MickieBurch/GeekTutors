@@ -36,3 +36,19 @@ query GetAllTutors{
   }
 }
 `
+export const GET_ARTICLE_BY_ID=gql`
+  query GetArticleById($token:String!,$id:ID!){
+    GetArticleById(token:$token,id:$id){
+      _id
+      name
+      body
+      image
+      tutorId{
+        firstName
+        lastName
+        image
+        description
+      }
+    }
+  }
+`
