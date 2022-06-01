@@ -6,7 +6,7 @@ function TutorCard(props){
     const renderSaveButton=()=>{
         try {
             if(Auth.loggedIn()){            
-                if(props.userQuery.data.GetCurrentUser.selectedTutor==null||props.userQuery.data.GetCurrentUser.selectedTutor._id!=props.element._id){
+                if(props.userQuery.data.GetCurrentUser.selectedTutor==null||props.userQuery.data.GetCurrentUser.selectedTutor._id!==props.element._id){
                     return <button onClick={(e) => {
                         e.preventDefault(); 
                         const updatedUser=props.enrollStudentFunction(props.element._id)
@@ -25,7 +25,7 @@ function TutorCard(props){
     
     return(
         <Col lg={3} sm={`12`} >
-          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5' data-tutorId={props.element._id}>
+          <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-2' data-tutorId={props.element._id}>
             <Card.Img variant="top" src={props.element.image} />
             <Card.Body>
               <Card.Title>{props.element.firstName} {props.element.lastName}</Card.Title>
