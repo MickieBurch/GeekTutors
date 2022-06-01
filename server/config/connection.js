@@ -1,4 +1,4 @@
 const mongoose= require("mongoose")
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mernshopping')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/geektutor')
 module.exports=mongoose.connection
