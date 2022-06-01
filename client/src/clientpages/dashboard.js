@@ -32,7 +32,7 @@ function Dashboard(props) {
       console.log(error);
     }
   }
-  const userQuery = useQuery(GET_CURRENT_USER,{variables:{token:Auth.getToken()}})
+  const userQuery = useQuery(GET_CURRENT_USER,{variables:{token:Auth.getToken()||"GUEST"}})
   const tutorQuery=useQuery(GET_ALL_TUTORS)
   if (userQuery.loading||tutorQuery.loading) return "LOADING"
   if (userQuery.error) console.log(JSON.stringify(userQuery.error));

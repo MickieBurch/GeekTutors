@@ -12,6 +12,8 @@ const resolvers = {
             path:"selectedTutor",
             populate:"articles"
           })
+        }else if(token=="GUEST"){
+          return await User.findById(token)
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
