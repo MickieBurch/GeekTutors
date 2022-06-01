@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function Footer() {
-    const footLink = [["Twitter", "https://twitter.com/TutorsGeek"], ["Linkedin", "https://www.linkedin.com/in/geek-tutor-8266a6240/"], ['Github', "https://github.com/MickieBurch/GeekTutors"], ['Facebook', "https://https://www.facebook.com/GeekTutors-100256876053624.com/"]]
+    const footLink = [["Twitter", "https://twitter.com/TutorsGeek"], ["Linkedin", "https://www.linkedin.com/in/geek-tutor-8266a6240/"], ['Github', "https://github.com/MickieBurch/GeekTutors"], ['Facebook', "https://www.facebook.com/GeekTutors-100256876053624"]]
 
     function Array(link) {
         console.log(link[0]);
