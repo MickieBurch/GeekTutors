@@ -43,5 +43,4 @@ const typeDefs = gql`
     unenrollStudent(token:String!,tutorId:ID!): User
   }
 `;
-
 module.exports = typeDefs;
