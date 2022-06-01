@@ -1,22 +1,22 @@
 [
     {
         "name":"Intro into computer science",
-        "image":"https://media.istockphoto.com/photos/portrait-of-a-happy-latin-american-teacher-at-the-school-picture-id687830554?b=1&k=20&m=687830554&s=170667a&w=0&h=OCC-gdrMn_GcMx9BlvOF-Lu4hYp5mBPX8TIG9dDj9E4=",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/a/ab/Pexels-luis-gomes-546819.jpg",
         "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
     },
     {
         "name":"HTML, NPM, and Javascript!",
-        "image":"https://media.istockphoto.com/photos/happy-teacher-standing-in-corridor-picture-id482414358?k=20&m=482414358&s=612x612&w=0&h=Ht02GsqCEtAdYzA3Gv3rBXAo6ttotMSrzuG2KfmHvJQ=",
+        "image":"https://cc0.photo/wp-content/uploads/2016/01/Code-editors-on-Windows-10-scaled.jpg",
         "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
     },
     {
         "name":"HTML, CSS, and React",
-        "image":"https://media.istockphoto.com/photos/portrait-of-confident-caucasian-male-teacher-in-classroom-picture-id515264678?k=20&m=515264678&s=612x612&w=0&h=CA_SJX9Jc8-76KqwV60LcFD3CLRMQG8KSA9lImVrd8k=",
+        "image":"https://www.seobility.net/en/wiki/images/a/a6/HTML-Doctype.png",
         "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
     },
     {
         "name":"How to use Word professionally",
-        "image":"https://img.freepik.com/free-photo/serious-teacher-glasses-standing-blackboard-hand-hand_23-2148201001.jpg?size=626&ext=jpg",
+        "image":"https://live.staticflickr.com/5044/5251378117_d57920fe6e_b.jpg",
         "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac auctor magna, eget placerat neque.\nVestibulum nec consequat ante. Suspendisse nec nulla ut est posuere semper sit amet et odio. Orci varius natoque\npenatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ac magna elementum, sollicitudin enim eu,\npulvinar nisi. Aenean hendrerit et ante a scelerisque."
     }
 ]
