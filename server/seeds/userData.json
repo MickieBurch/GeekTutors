@@ -15,18 +15,10 @@
         ]
     },
     {
-        "firstName":"Tester",
-        "lastName":"McTestFace",
-        "email":"legitemail2@email.com",
-        "password":"123123",
-        "isTutor":false
-    },
-
-    {
         "firstName":"Chris",
         "lastName":"Snyder",
         "image":"https://img.freepik.com/free-photo/serious-teacher-glasses-standing-blackboard-hand-hand_23-2148201001.jpg?size=626&ext=jpg",
-        "email":"legitemail@email.com",
+        "email":"legitemail1@email.com",
         "description":"Web development tutor with a wide variety of tutoring methods",
         "password":"123123",
         "isTutor":true,
