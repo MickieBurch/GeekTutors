@@ -9,6 +9,7 @@ import Tutor from './clientpages/tutor';
 import LoginForm from './clientpages/LoginForm';
 import SignupForm from './clientpages/SignupForm';
 import Footer from './components/Footer'
+import Article from "./clientpages/article"
 
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,16 +37,19 @@ const client = new ApolloClient({
 
 function App() {
 	const [currentTab, setCurrentTab] = useState("home");
+	const [currentArticle,setCurrentArticle]=useState(null)
 	const renderTab = () => {
 		switch (currentTab) {
 			case "home":
 				return <Dashboard setCurrentTab={setCurrentTab} />;
 			case "tutor":
-				return <Tutor />;
+				return <Tutor setCurrentTab={setCurrentTab} setCurrentArticle={setCurrentArticle}/>;
 			case "signup":
 				return <SignupForm />;
 			case "login":
 				return <LoginForm />;
+			case "article":
+				return <Article currentArticle={currentArticle}/>
 			default:
 				return null;
 		}
