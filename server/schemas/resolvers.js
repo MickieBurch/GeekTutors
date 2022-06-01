@@ -8,7 +8,10 @@ const resolvers = {
       try {
         const user= authMiddleware(token)
         if(user){
-          return await User.findById(user._id).populate("artices")
+          return await User.findById(user._id).populate("articles").populate({
+            path:"selectedTutor",
+            populate:"articles"
+          })
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
@@ -89,7 +92,7 @@ const resolvers = {
       try {
         const user=authMiddleware(token)
         if (user) {
-        return await User.findByIdAndUpdate(user.id, {selectedTutor:tutorId}, { new: true });
+        return await User.findByIdAndUpdate(user._id, {selectedTutor:tutorId}, { new: true }).populate("selectedTutor");
         }
       throw new AuthenticationError('Not logged in');
       } catch (error) {
@@ -118,6 +121,18 @@ const resolvers = {
           return newArticle
         }
         throw new AuthenticationError("invalid user")
+      } catch (error) {
+        console.log(error);
+        return error
+      }
+    },
+    unenrollStudent: async(parent,{token,tutorId})=>{
+      try {
+        const user = authMiddleware(token)
+        if (user){
+          return await User.findByIdAndUpdate(user._id,{$set:{selectedTutor:null}})
+        }
+        throw new AuthenticationError("invalid token")
       } catch (error) {
         console.log(error);
         return error

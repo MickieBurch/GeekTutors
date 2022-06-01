@@ -36,7 +36,6 @@ const client = new ApolloClient({
 
 function App() {
 	const [currentTab, setCurrentTab] = useState("home");
-
 	const renderTab = () => {
 		switch (currentTab) {
 			case "home":
