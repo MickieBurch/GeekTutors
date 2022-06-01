@@ -13,7 +13,7 @@ const resolvers = {
             populate:"articles"
           })
         }else if(token=="GUEST"){
-          return await User.findById(token)
+          return await User.find({firstName:token})
         }
         throw new AuthenticationError("invalid token")
       } catch (error) {
