@@ -42,13 +42,6 @@ footer li {
   text-decoration: none
 }
 
-@media screen and (max-width: 600px) {
-  nav a {
-    margin : 0
-  }
-}
-
-
 .scheduler {
   background-color: grey;
   padding: 3rem 2rem 3rem 2rem;
@@ -62,7 +55,6 @@ footer li {
 }
 
 .tutorcard {
- 
   height: 30rem;
   border-radius: 2%;
 }
@@ -70,4 +62,15 @@ footer li {
 .tutorbio {
   height: 30rem;
   border-radius: 2%;
+}
+
+.tutorarticle {
+  height: 30rem;
+  border-radius: 2%;
+}
+
+@media screen and (max-width: 600px) {
+  nav a {
+    margin : 0
+  }
 }
