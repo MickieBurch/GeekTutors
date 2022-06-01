@@ -1,6 +1,9 @@
 import React from "react";
 import { Container, Card, CardGroup, Row, Col } from "react-bootstrap";
-import Ronald from "../assets/img/Ronald.jpg";
+import Tutor1 from "../assets/img/Graphql.jpg";
+import Tutor2 from "../assets/img/HTML.jpg";
+import Tutor3 from "../assets/img/CSS.jpg";
+import Tutor4 from "../assets/img/Java.jpg";
 
 
 function Dashboard(props) {
@@ -14,7 +17,7 @@ function Dashboard(props) {
       <Row className='mt-4'>
         <Col lg={3} sm={`12`} >
           <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
-            <Card.Img variant="top" src={Ronald} />
+            <Card.Img variant="top" src={Tutor1} />
             <Card.Body>
               <Card.Title>Ronald J. Tutor</Card.Title>
               <Card.Text>Subjects offered:</Card.Text>
@@ -29,7 +32,7 @@ function Dashboard(props) {
         </Col>
         <Col lg={3}>
           <Card style={{ width: "18rem" }} border='dark' className='mx-auto mt-5'>
-            <Card.Img variant="top" src={Ronald} />
+            <Card.Img variant="top" src={Tutor2} />
             <Card.Body>
               <Card.Title>Robert Tutor</Card.Title>
               <Card.Text>Subjects offered:</Card.Text>
@@ -44,7 +47,7 @@ function Dashboard(props) {
         </Col>
         <Col lg={3}>
           <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
-            <Card.Img variant="top" src={Ronald} />
+            <Card.Img variant="top" src={Tutor3} />
             <Card.Body>
               <Card.Title>Rhonda Tutor</Card.Title>
               <Card.Text>Subjects offered:</Card.Text>
@@ -59,7 +62,7 @@ function Dashboard(props) {
         </Col>
         <Col lg={3}>
           <Card style={{ width: "18rem" }} border='dark' className='mx-auto  mt-5'>
-            <Card.Img variant="top" src={Ronald} />
+            <Card.Img variant="top" src={Tutor4} />
             <Card.Body>
               <Card.Title>Alec Tutor</Card.Title>
               <Card.Text>Subjects offered:</Card.Text>

@@ -1,5 +1,5 @@
 import React from "react";
-import Ronald from "../assets/img/Ronald.jpg"
+import Ronald from "../assets/img/Graphql.jpg"
 import { Card, Container, Row, Col } from "react-bootstrap";
 import GeekCalendar from "./calendar";
 import Picker from './datepicker';
