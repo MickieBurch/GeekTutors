@@ -39,20 +39,12 @@ function Dashboard(props) {
       console.log(error);
     }
   }
-  const userQuery = useQuery(GET_CURRENT_USER, {
-    variables: {
-      token: Auth.getToken()
-    }
-  })
-  const tutorQuery = useQuery(GET_ALL_TUTORS)
-  const { loading, error2, data } = useQuery(GET_ALL_TUTORS)
-  if (userQuery.loading || tutorQuery.loading) return "LOADING"
-
-
-  if (loading) return "LOADING..."
-  if (error2) return `ERROR: ${error2}`
-  console.log(data.GetAllTutors);
-
+  const userQuery = useQuery(GET_CURRENT_USER,{variables:{token:Auth.getToken()||"GUEST"}})
+  const tutorQuery=useQuery(GET_ALL_TUTORS)
+  if (userQuery.loading||tutorQuery.loading) return "LOADING"
+  if (userQuery.error) console.log(JSON.stringify(userQuery.error));
+  if (tutorQuery.error) console.log(tutorQuery.error);
+  console.log("tutorquery: ",tutorQuery);
   return (
     <Container className='mt-4'>
       {Auth.loggedIn() ? (

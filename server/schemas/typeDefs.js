@@ -28,7 +28,7 @@ const typeDefs = gql`
 
   type Query {
     GetAllUsers(token:String!): [User]
-    GetCurrentUser(token:String!): User
+    GetCurrentUser(token:String): User
     GetAllArticles(token:String!): [Article]
     GetArticleById(token:String!,id:ID!): Article
     GetAllTutors: [User]
@@ -43,5 +43,4 @@ const typeDefs = gql`
     unenrollStudent(token:String!,tutorId:ID!): User
   }
 `;
-
 module.exports = typeDefs;

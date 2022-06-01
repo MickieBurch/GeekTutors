@@ -11,18 +11,11 @@ db.once("open", async()=>{
     const users=await User.insertMany(userData)
     const articles = await Article.insertMany(articleData)
 
-    for (newUser of users){
-        if (!newUser.isTutor){
-            console.log("newUser isn't a proctor");
-            newUser.selectedTutor = users[0]._id
-            await newUser.save()
-        }else{
-            let index = Math.floor(Math.random()*articles.length)
-            newUser.articles[0]=articles[index]._id
-            articles[index].tutorId=newUser._id
-            await newUser.save()
-            await articles[index].save()
-        }
+    for (let x=0;x<users.length;x++){
+        users[x].articles[0]=articles[x]._id
+        articles[x].tutorId=users[x]._id
+        await users[x].save()
+        await articles[x].save()
     }
     console.log("finished seeding. all data: ");
     console.log("users:",users);
