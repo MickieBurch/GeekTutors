@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Card } from 'react-bootstrap'
 import Ronald from '../../assets/img/Ronald.jpg'
-import Auth from '../../utils/auth'
+import Auth from '../utils/auth'
 
 // import { useQuery } from '@apollo/client';
 
