@@ -20,7 +20,6 @@ function Dashboard(props) {
       const updatedUser = await enrollStudent({
         variables: { token, tutorId }
       })
-      console.log("updatedUser:", updatedUser);
       props.setCurrentTab("tutor")
     } catch (error) {
       console.log(error);
@@ -33,7 +32,6 @@ function Dashboard(props) {
       const updatedUser = await unenrollStudent({
         variables: { token, tutorId }
       })
-      console.log("unenrolled user:", updatedUser);
       window.location.reload()
     } catch (error) {
       console.log(error);
@@ -44,7 +42,6 @@ function Dashboard(props) {
   if (userQuery.loading||tutorQuery.loading) return "LOADING"
   if (userQuery.error) console.log(JSON.stringify(userQuery.error));
   if (tutorQuery.error) console.log(tutorQuery.error);
-  console.log("tutorquery: ",tutorQuery);
   return (
     <Container className='mt-4'>
       {Auth.loggedIn() ? (
