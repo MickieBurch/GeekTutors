@@ -3,12 +3,12 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@ap
 import { BrowserRouter as Router } from "react-router-dom";
 import { setContext } from '@apollo/client/link/context';
 
-import Header from './components/Header/';
+import Header from './components/Header.js';
 import Dashboard from './clientpages/dashboard';
 import Tutor from './clientpages/tutor';
 import LoginForm from './clientpages/LoginForm';
 import SignupForm from './clientpages/SignupForm';
-import Footer from './components/Footer'
+import Footer from './components/Footer.js'
 import Article from "./clientpages/article"
 
 import { Container } from "react-bootstrap";
@@ -54,7 +54,6 @@ function App() {
 				return null;
 		}
 	};
-	console.log(currentTab)
 	return (
 		<ApolloProvider client={client}>
 			<Router>
